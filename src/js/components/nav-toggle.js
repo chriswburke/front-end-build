@@ -1,4 +1,4 @@
-import {Component, domLoaded, $dom, request, PubSub} from '../lib/component'
+import {Component, domLoaded, request, PubSub} from '../lib/component'
 
 const NavToggle = new Component({
 	el: '#nav-toggle',
@@ -8,7 +8,7 @@ const NavToggle = new Component({
   },
   subscriptions: {},
 	init() {
-		this.debug('log', this.attrs())
+		this.debug('log', this.attrs)
 	},
 
 	toggleNav() {

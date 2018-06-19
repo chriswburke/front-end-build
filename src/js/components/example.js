@@ -1,4 +1,4 @@
-import { Component, domLoaded, $dom, request, PubSub, utility } from '../lib/component'
+import { Component, domLoaded, request, PubSub, utility } from '../lib/component'
 
 const Example = new Component( {
     el: '.example',
@@ -10,19 +10,25 @@ const Example = new Component( {
     subscriptions: {
       'locationUpdate': 'subhandler'
     },
+
     init() {
-      console.log('example init')
+      console.log('Example Init')
     },
+
     keyHandler(e) {
       console.log(e);
     },
-    somefunk(event){
-      this.debug('warn', this.attrs())
+
+    somefunk(e){
+			console.log(e);
+      this.debug('warn', this.attrs)
     },
     morefunk(event){
-      this.debug('info', this.attrs())
+			console.log(e);
+      this.debug('info', this.attrs)
     },
     subhandler(data, msg){
+			console.log(e);
       this.debug('info', {data, msg})
     }
 } )

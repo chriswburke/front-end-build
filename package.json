@@ -71,6 +71,7 @@
     "map-stream": "0.0.6",
     "node-sass": "^4.3.0",
     "node-sass-import": "^1.1.1",
+    "nodelist-foreach-polyfill": "^1.2.0",
     "npm-watch": "^0.1.7",
     "onchange": "^3.2.1",
     "plur": "^2.1.2",
