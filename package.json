@@ -79,6 +79,7 @@
     "pretty-bytes": "^4.0.2",
     "pretty-log": "^0.1.0",
     "pubsub-js": "^1.5.7",
+    "ready": "github:ryanmorr/ready",
     "rimraf": "^2.5.4",
     "sass-lint": "^1.10.2",
     "sassdoc": "^2.1.20",

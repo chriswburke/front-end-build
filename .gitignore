@@ -80,3 +80,4 @@ Desktop.ini
 $RECYCLE.BIN/
 *.dmp
 /src/sass/generated/_icons.scss
+/package-lock.json

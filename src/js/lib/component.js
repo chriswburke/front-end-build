@@ -4,6 +4,7 @@ import attributes from 'data-attributes'
 import request from 'superagent'
 import PubSub from 'pubsub-js'
 import utility from './utility'
+import ready from 'ready'
 import 'nodelist-foreach-polyfill'
 
 const eventSplitter = str => {
@@ -96,10 +97,9 @@ class awesomeComponent {
 const Component = function(...props) {
   const options = props[0]
   domLoaded.then(() => {
-    const nodes = document.querySelectorAll( options.el )
-    nodes.forEach(node => {
-      new awesomeComponent(node, options)
-    })
+		ready(options.el, (node) => {
+			new awesomeComponent(node, options)
+		})
   })
 }
 
