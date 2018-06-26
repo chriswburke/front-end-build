@@ -3,7 +3,7 @@ import domLoaded from './dom-loaded'
 import attributes from 'data-attributes'
 import request from 'superagent'
 import PubSub from 'pubsub-js'
-import utility from './utility'
+import uid from './utility/uid'
 import ready from 'ready'
 import 'nodelist-foreach-polyfill'
 
@@ -18,17 +18,18 @@ const eventSplitter = str => {
 
 class awesomeComponent {
     constructor(node, ...options ) {
+			this._uid = uid()
       Object.assign( this, ...options )
         this.element = node
         this.ready.call( this )
+				if (this.element) {
+					this.element.setAttribute('component-instance', this._uid)
+				}
     }
     ready() {
-      if (!this.element) { this.mount(); return }
-      domLoaded.then(() => {
-        this.beforeMount()
-        this.mount()
-        this.afterMount()
-       })
+      this.beforeMount()
+      this.mount()
+      this.afterMount()
     }
     debug( logtype, log ) {
       console[logtype]( `Debug: ${this.name}\n`, log )
@@ -97,10 +98,15 @@ class awesomeComponent {
 const Component = function(...props) {
   const options = props[0]
   domLoaded.then(() => {
-		ready(options.el, (node) => {
-			new awesomeComponent(node, options)
-		})
+		if (options.el) {
+			const	readyComponent = ready(options.el, node => {
+				new awesomeComponent(node, options)
+			})
+		} else {
+			new awesomeComponent(false, options)
+		}
+
   })
 }
 
-export { Component, domready, domLoaded, request, PubSub, utility }
+export { Component, domready, domLoaded, request, PubSub }

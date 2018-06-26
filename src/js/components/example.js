@@ -1,4 +1,4 @@
-import { Component, domLoaded, request, PubSub, utility } from '../lib/component'
+import { Component, domLoaded, request, PubSub } from '../lib/component'
 
 const Example = new Component( {
     el: '.example',
@@ -12,7 +12,7 @@ const Example = new Component( {
     },
 
     init() {
-      console.log('Example Init')
+      console.log('Example Init', this._uid)
     },
 
     keyHandler(e) {
